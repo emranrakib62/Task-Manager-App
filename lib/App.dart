@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/screens/Splash_Screen.dart';
+import 'package:task_manager/utils/App_colors.dart';
 class TaskManagerApp extends StatelessWidget {
   const TaskManagerApp({super.key});
 
@@ -31,7 +32,13 @@ class TaskManagerApp extends StatelessWidget {
         ),
         filledButtonTheme: FilledButtonThemeData(
           style: FilledButton.styleFrom(
-            backgroundColor: Colors.green
+            backgroundColor: AppColors.pcolor2,
+            fixedSize: Size.fromWidth(double.maxFinite),
+            padding: EdgeInsets.symmetric(vertical: 12),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8)
+            )
+
           )
         )
 

@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:task_manager/Widgets/Screen_background.dart';
+import 'package:task_manager/screens/Login_Screen.dart';
 import 'package:task_manager/screens/Sign_up_Screen.dart';
 import 'package:task_manager/utils/App_colors.dart';
 class SignUpScreen extends StatefulWidget {
@@ -12,8 +13,8 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
 
-  void _onTapSignUp(){
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));
+  void _onTaplogin(){
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
   }
   @override
   Widget build(BuildContext context) {
@@ -67,7 +68,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     TextSpan(
                         text: 'Login',style: TextStyle(color: AppColors.pcolor,fontWeight:FontWeight.bold),
-                        recognizer: TapGestureRecognizer()..onTap=_onTapSignUp
+                        recognizer: TapGestureRecognizer()..onTap=_onTaplogin
                     )
                   ]
 

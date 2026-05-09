@@ -1,7 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task_manager/Widgets/Screen_background.dart';
-import 'package:task_manager/screens/Sign_up_Screen.dart';
+import 'package:task_manager/Widgets/screen_background.dart';
+import 'package:task_manager/screens/sign_up_screen.dart';
+import 'package:task_manager/screens/forget_password_email_verify.dart';
 import 'package:task_manager/utils/App_colors.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -47,10 +48,15 @@ class _LoginScreenState extends State<LoginScreen> {
             Center(
             child: Column(
               children: [
-                TextButton(onPressed: (){}, child: Text('Forget Password ?',style: TextStyle(color: Colors.grey))),
+                TextButton(onPressed: (){
+
+Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPasswordEmailVerify()));
+
+                  
+                }, child: Text('Forget Password ?',style: TextStyle(color: Colors.grey))),
 
                 RichText(text: TextSpan(
-                  text: "Don't have an account?",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600),
+                  text: "Don't have an account? ",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600),
                   children: [
                     TextSpan(
                       text: 'Sign up',style: TextStyle(color: AppColors.pcolor,fontWeight:FontWeight.bold),

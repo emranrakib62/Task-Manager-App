@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:task_manager/Widgets/Screen_background.dart';
 import 'package:task_manager/screens/Sign_up_Screen.dart';
 import 'package:task_manager/utils/App_colors.dart';
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  
+class _SignUpScreenState extends State<SignUpScreen> {
+
   void _onTapSignUp(){
     Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));
-}
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,17 +24,34 @@ class _LoginScreenState extends State<LoginScreen> {
         child: ScreenBackground(child: Column(
           children: [
             SizedBox(height: 150,),
-            Text("Get Started With",
-            style: Theme.of(context).textTheme.titleLarge,
+            Text("Join with Us",
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             SizedBox(height: 25,),
-            
+
             TextFormField(
-        decoration: InputDecoration(
-          hintText: 'Email'
-        ),
+              decoration: InputDecoration(
+                  hintText: 'Email'
+              ),
             ),
             SizedBox(height: 10,),
+
+            TextFormField(
+              decoration: InputDecoration(
+                  hintText: 'First Name'
+              ),
+            ),
+            SizedBox(height: 10,),
+
+
+
+            TextFormField(
+              decoration: InputDecoration(
+                  hintText: 'Last Name'
+              ),
+            ),
+
+
             TextFormField(
               obscureText: true,
               decoration: InputDecoration(
@@ -43,26 +60,20 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             FilledButton(onPressed: (){}, child: Icon(Icons.arrow_circle_right_outlined)),
-          SizedBox(height: 35),
+            SizedBox(height: 35),
             Center(
-            child: Column(
-              children: [
-                TextButton(onPressed: (){}, child: Text('Forget Password ?',style: TextStyle(color: Colors.grey))),
-
-                RichText(text: TextSpan(
-                  text: "Don't have an account?",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600),
+              child: RichText(text: TextSpan(
+                  text: "Have an account?",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600),
                   children: [
                     TextSpan(
-                      text: 'Sign up',style: TextStyle(color: AppColors.pcolor,fontWeight:FontWeight.bold),
-                    recognizer: TapGestureRecognizer()..onTap=_onTapSignUp
+                        text: 'Login',style: TextStyle(color: AppColors.pcolor,fontWeight:FontWeight.bold),
+                        recognizer: TapGestureRecognizer()..onTap=_onTapSignUp
                     )
                   ]
 
-                ))
-              ],
-            ),
-          )
-          
+              )),
+            )
+
           ],
         ),),
       ),

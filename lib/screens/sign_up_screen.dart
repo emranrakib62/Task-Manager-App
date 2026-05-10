@@ -20,63 +20,65 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      body: Padding(
-        padding: const EdgeInsets.all(30),
-        child: ScreenBackground(child: Column(
-          children: [
-            SizedBox(height: 150,),
-            Text("Join with Us",
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            SizedBox(height: 25,),
-
-            TextFormField(
-              decoration: InputDecoration(
-                  hintText: 'Email'
+      body: ScreenBackground(
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: ScreenBackground(child: Column(
+            children: [
+              SizedBox(height: 150,),
+              Text("Join with Us",
+                style: Theme.of(context).textTheme.titleLarge,
               ),
-            ),
-            SizedBox(height: 10,),
-
-            TextFormField(
-              decoration: InputDecoration(
-                  hintText: 'First Name'
+              SizedBox(height: 25,),
+        
+              TextFormField(
+                decoration: InputDecoration(
+                    hintText: 'Email'
+                ),
               ),
-            ),
-            SizedBox(height: 10,),
-
-
-
-            TextFormField(
-              decoration: InputDecoration(
-                  hintText: 'Last Name'
+              SizedBox(height: 10,),
+        
+              TextFormField(
+                decoration: InputDecoration(
+                    hintText: 'First Name'
+                ),
               ),
-            ),
-
-
-            TextFormField(
-              obscureText: true,
-              decoration: InputDecoration(
-
-                  hintText: 'Password'
+              SizedBox(height: 10,),
+        
+        
+        
+              TextFormField(
+                decoration: InputDecoration(
+                    hintText: 'Last Name'
+                ),
               ),
-            ),
-            FilledButton(onPressed: (){}, child: Icon(Icons.arrow_circle_right_outlined)),
-            SizedBox(height: 35),
-            Center(
-              child: RichText(text: TextSpan(
-                  text: "Have an account?",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600),
-                  children: [
-                    TextSpan(
-                        text: 'Login',style: TextStyle(color: AppColors.pcolor,fontWeight:FontWeight.bold),
-                        recognizer: TapGestureRecognizer()..onTap=_onTaplogin
-                    )
-                  ]
-
-              )),
-            )
-
-          ],
-        ),),
+        
+        
+              TextFormField(
+                obscureText: true,
+                decoration: InputDecoration(
+        
+                    hintText: 'Password'
+                ),
+              ),
+              FilledButton(onPressed: (){}, child: Icon(Icons.arrow_circle_right_outlined)),
+              SizedBox(height: 35),
+              Center(
+                child: RichText(text: TextSpan(
+                    text: "Have an account?",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600),
+                    children: [
+                      TextSpan(
+                          text: 'Login',style: TextStyle(color: AppColors.pcolor,fontWeight:FontWeight.bold),
+                          recognizer: TapGestureRecognizer()..onTap=_onTaplogin
+                      )
+                    ]
+        
+                )),
+              )
+        
+            ],
+          ),),
+        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:task_manager/Widgets/screen_background.dart';
+import 'package:task_manager/screens/forget_password_otp_verification.dart';
 import 'package:task_manager/screens/sign_up_screen.dart';
 import 'package:task_manager/utils/App_colors.dart';
 class ForgetPasswordEmailVerify extends StatefulWidget {
@@ -36,7 +37,10 @@ class _ForgetPasswordEmailVerifyState extends State<ForgetPasswordEmailVerify> {
                 ),
               ),
               SizedBox(height: 20),
-              FilledButton(onPressed: (){}, child: Icon(Icons.arrow_circle_right_outlined)),
+              FilledButton(onPressed: (){
+
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPasswordOtpVerification()));
+              }, child: Icon(Icons.arrow_circle_right_outlined)),
               SizedBox(height: 35),
               Center(
                 child: RichText(text: TextSpan(

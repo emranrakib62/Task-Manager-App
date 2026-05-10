@@ -32,33 +32,23 @@ class _ForgetPasswordOtpVerificationState extends State<ForgetPasswordOtpVerific
               SizedBox(height: 25,),
 
 
-            PinInput(
-              length: 4,
-              builder: (context, cells) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: cells.map((cell) {
-                    return Container(
-                      width: 50,
-                      height: 50,
-                      margin: EdgeInsets.symmetric(horizontal: 8),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: cell.isFocused ? Colors.blue : Colors.grey[200],
-                      ),
-                      child: Center(
-                        child: Text(
-                          cell.character ?? '',
-                          style: TextStyle(fontSize: 24),
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                );
-              },
-              onCompleted: (pin) => print('PIN: $pin'),
-            ),
-
+              PinCodeTextField(
+                appContext: context,
+                length: 6,
+                obscureText: true,
+                animationType: AnimationType.fade,
+                keyboardType: TextInputType.number,
+                pinTheme: PinTheme(
+                  shape: PinCodeFieldShape.box,
+                  borderRadius: BorderRadius.circular(7),
+                  fieldHeight: 50,
+                  fieldWidth: 40,
+                  activeFillColor: Colors.white,
+                  inactiveColor: Colors.grey.shade300,
+                  selectedColor: AppColors.pcolor2,
+                ),
+                backgroundColor: Colors.transparent,
+              ), // PinCodeTextField
 
               SizedBox(height: 20),
               FilledButton(onPressed: (){}, child: Icon(Icons.arrow_circle_right_outlined)),
@@ -68,7 +58,7 @@ class _ForgetPasswordOtpVerificationState extends State<ForgetPasswordOtpVerific
                     text: " have an account? ",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600),
                     children: [
                       TextSpan(
-                          text: 'Login',style: TextStyle(color: AppColors.pcolor,fontWeight:FontWeight.bold),
+                          text: 'Sign in',style: TextStyle(color: AppColors.pcolor,fontWeight:FontWeight.bold),
                           recognizer: TapGestureRecognizer()..onTap=_onTapSignUp
                       )
                     ]

@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:task_manager/Widgets/screen_background.dart';
+import 'package:task_manager/screens/main_nav_screen.dart';
 import 'package:task_manager/screens/sign_up_screen.dart';
 import 'package:task_manager/screens/forget_password_email_verify.dart';
 import 'package:task_manager/utils/App_colors.dart';
@@ -46,7 +47,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     hintText: 'Password'
                 ),
               ),
-              FilledButton(onPressed: (){}, child: Icon(Icons.arrow_circle_right_outlined)),
+              FilledButton(onPressed: (){
+Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainNavScreen()));
+
+              }, child: Icon(Icons.arrow_circle_right_outlined)),
             SizedBox(height: 35),
               Center(
               child: Column(

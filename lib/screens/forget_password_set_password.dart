@@ -1,9 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task_manager/Widgets/screen_background.dart';
-import 'package:task_manager/screens/forget_password_otp_verification.dart';
+import 'package:task_manager/screens/login_screen.dart';
 import 'package:task_manager/screens/sign_up_screen.dart';
-import 'package:task_manager/utils/App_colors.dart';
+import 'package:task_manager/utils/app_colors.dart';
+
+import '../widgets/screen_background.dart';
+import 'forget_password_otp_verification.dart';
+
 class ForgetPasswordSetPassword extends StatefulWidget {
   const ForgetPasswordSetPassword({super.key});
 
@@ -12,69 +15,65 @@ class ForgetPasswordSetPassword extends StatefulWidget {
 }
 
 class _ForgetPasswordSetPasswordState extends State<ForgetPasswordSetPassword> {
-
   void _onTapSignUp(){
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: ScreenBackground(
         child: Padding(
           padding: const EdgeInsets.all(30.0),
-          child: ScreenBackground(child: Column(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 150,),
-              Text("Set Password",
+              SizedBox(
+                height: 150,
+              ),
+              Text(
+                'Set Password',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               SizedBox(height: 10,),
-              Text('password Should be more than 6 letters and combination of numbers',
-              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: Colors.grey
-              ),
-              ),
-              SizedBox(height: 25,),
-
-              TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'Password'
+              Text('Password should be more than 6 letters and combination of numbers',
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                    color: Colors.grey
                 ),
               ),
-
-              TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'Password'
-                ),
+              SizedBox(
+                height: 25,
               ),
+              TextFormField(
+                obscureText: true,
+                decoration: InputDecoration(hintText: 'Password'),
+              ),
+              SizedBox(height: 10,),
+              TextFormField(
+                obscureText: true,
 
+                decoration: InputDecoration(hintText: 'Confirm Password'),
+              ),
+              SizedBox(height: 20,),
+              FilledButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+                  },
+                  child: Icon(Icons.arrow_circle_right_outlined)),
 
-
-
-
-
-              SizedBox(height: 10),
-              FilledButton(onPressed: (){
-
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPasswordSetPassword()));
-              }, child: Icon(Icons.arrow_circle_right_outlined)),
-              SizedBox(height: 35),
+              SizedBox(height: 35,),
               Center(
                 child: RichText(text: TextSpan(
-                    text: " have an account? ",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600),
+                    text: " have an account? ",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500),
                     children: [
                       TextSpan(
-                          text: 'Login',style: TextStyle(color: AppColors.pcolor,fontWeight:FontWeight.bold),
-                          recognizer: TapGestureRecognizer()..onTap=_onTapSignUp
+                          text: 'Login', style: TextStyle(color: AppColors.pcolor2,fontWeight: FontWeight.bold),
+                          recognizer: TapGestureRecognizer()..onTap = _onTapSignUp
                       )
                     ]
-
                 )),
               )
-
             ],
-          ),),
+          ),
         ),
       ),
     );

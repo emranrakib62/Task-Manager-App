@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/Widgets/task_count_by_status.dart';
 import 'package:task_manager/screens/tm_appbar.dart';
 class NewTaskScreen extends StatefulWidget {
   const NewTaskScreen({super.key});
@@ -12,6 +13,19 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TmAppbar(),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 90,
+            child: ListView.separated(itemBuilder:(context,index){
+              return TaskCountByStatus(title: 'New', count: 10);
+            }, separatorBuilder: (context,index){
+              return SizedBox(width: 4,);
+            }, itemCount: 4),
+          ),
+
+        ],
+      ),
     );
   }
 }

@@ -15,13 +15,18 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
       appBar: TmAppbar(),
       body: Column(
         children: [
-          SizedBox(
-            height: 90,
-            child: ListView.separated(itemBuilder:(context,index){
-              return TaskCountByStatus(title: 'New', count: 10);
-            }, separatorBuilder: (context,index){
-              return SizedBox(width: 4,);
-            }, itemCount: 4),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              height: 90,
+              child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder:(context,index){
+                return TaskCountByStatus(title: 'New', count: 10);
+              }, separatorBuilder: (context,index){
+                return SizedBox(width: 10,);
+              }, itemCount: 4),
+            ),
           ),
 
         ],

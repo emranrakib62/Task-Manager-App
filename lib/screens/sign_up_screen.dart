@@ -54,6 +54,18 @@ key: _formkey,
                     decoration: InputDecoration(
                         hintText: 'Email'
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please Enter email';
+                      } else {
+                        return null;
+                      }
+                    },
+
+
+
+
+
                   ),
                   SizedBox(height: 10,),
                         
@@ -62,6 +74,14 @@ key: _formkey,
                     decoration: InputDecoration(
                         hintText: 'First Name'
                     ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please Enter First name';
+                        } else {
+                          return null;
+                        }
+                      }
+
                   ),
                   SizedBox(height: 10,),
                         
@@ -72,6 +92,16 @@ key: _formkey,
                     decoration: InputDecoration(
                         hintText: 'Last Name'
                     ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please Enter Last name';
+                        } else {
+                          return null;
+                        }
+                      }
+
+
+
                   ),
 
 
@@ -79,8 +109,19 @@ key: _formkey,
                   TextFormField(
                     controller: _mobileController,
                     decoration: InputDecoration(
-                        hintText: 'Last Name'
+                        hintText: 'mobile'
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please Enter phone number';
+                      } else if (value.length != 11) {
+                        return 'Please enter correct phone number';
+                      } else {
+                        return null;
+                      }
+                    },
+
+
                   ),
                         
                         
@@ -91,8 +132,21 @@ key: _formkey,
                         
                         hintText: 'Password'
                     ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please Enter Password';
+                        } else {
+                          return null;
+                        }
+                      }
                   ),
-                  FilledButton(onPressed: (){}, child: Icon(Icons.arrow_circle_right_outlined)),
+                  FilledButton(onPressed: (){
+
+                    if(_formkey.currentState!.validate()){
+
+                    }
+
+                  }, child: Icon(Icons.arrow_circle_right_outlined)),
                   SizedBox(height: 35),
                   Center(
                     child: RichText(text: TextSpan(

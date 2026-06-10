@@ -23,7 +23,7 @@ if(response.statusCode==200){
 
 
 }else{
-  return ApiResponse(responseCode: response.statusCode, responseData: jsonDecode(response.body), isSuccess: true);
+  return ApiResponse(responseCode: response.statusCode, responseData: jsonDecode(response.body), isSuccess: false);
 }
   }catch($c){
     return ApiResponse(responseCode:-1

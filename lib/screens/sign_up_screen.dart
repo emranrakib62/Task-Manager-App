@@ -38,7 +38,11 @@ Future<void> _signUp() async {
     body:requestBody,
 
   );
-
+if(response.isSuccess){
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Sign up success..!')));
+}else{
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Something Wrong Try Again..!')));
+}
 
 }
 

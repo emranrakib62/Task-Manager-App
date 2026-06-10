@@ -17,6 +17,9 @@ sharedPreferences.setString(_accessTokenKey, token);
   sharedPreferences.setString(_userModelKey, jsonEncode(model.toJson()));
 accessToken=token;
 userModel=model;
+
+
 }
+
 
 }

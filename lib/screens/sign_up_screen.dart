@@ -2,9 +2,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:task_manager/Widgets/screen_background.dart';
+import 'package:task_manager/data/model/api_response.dart';
+import 'package:task_manager/data/service/api_caller.dart';
 import 'package:task_manager/screens/login_screen.dart';
 import 'package:task_manager/screens/sign_up_screen.dart';
 import 'package:task_manager/utils/App_colors.dart';
+import 'package:task_manager/utils/urls.dart';
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -22,7 +25,22 @@ final TextEditingController _mobileController=TextEditingController();
 final TextEditingController _passwordController=TextEditingController();
 
 
+Future<void> _signUp() async {
+  Map<String,dynamic> requestBody={
+    "email":_emailController.text,
+    "firstName":_firstNameController.text,
+    "lastName":_lastNamemailController.text,
+    "mobile":_mobileController.text,
+    "password":_passwordController.text,
+  };
+  final ApiResponse response=await ApiCaller.PostRequest(
+      URL:Urls.signUpURL,
+    body:requestBody,
 
+  );
+
+
+}
 
 void _onTaplogin(){
     Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
@@ -143,6 +161,11 @@ key: _formkey,
                   FilledButton(onPressed: (){
 
                     if(_formkey.currentState!.validate()){
+
+                 _signUp();
+
+
+
 
                     }
 

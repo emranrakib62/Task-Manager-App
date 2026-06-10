@@ -6,7 +6,7 @@ import 'package:http/http.dart';
 import 'package:logger/logger.dart';
 import 'package:task_manager/data/model/api_response.dart';
 
-class ApiColor{
+class ApiCaller{
 static final Logger _logger=Logger();
 
 static Future<ApiResponse>getRequest({required String URL}) async {

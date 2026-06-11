@@ -23,7 +23,7 @@ final TextEditingController _firstNameController=TextEditingController();
 final TextEditingController _lastNamemailController=TextEditingController();
 final TextEditingController _mobileController=TextEditingController();
 final TextEditingController _passwordController=TextEditingController();
-
+bool isLoading =false;
 
 Future<void> _signUp() async {
   Map<String,dynamic> requestBody={
@@ -33,15 +33,24 @@ Future<void> _signUp() async {
     "mobile":_mobileController.text,
     "password":_passwordController.text,
   };
+  setState(() {
+    isLoading=true;
+  });
+
+
   final ApiResponse response=await ApiCaller.PostRequest(
       URL:Urls.signUpURL,
     body:requestBody,
 
   );
+  setState(() {
+    isLoading=false;
+  });
+
 if(response.isSuccess){
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Sign up success..!')));
 }else{
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Something Wrong Try Again..!')));
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(response.responseData['data'])));
 }
 
 }
@@ -162,7 +171,7 @@ key: _formkey,
                         }
                       }
                   ),
-                  FilledButton(onPressed: (){
+                  isLoading?Center(child: CircularProgressIndicator()):FilledButton(onPressed: (){
 
                     if(_formkey.currentState!.validate()){
 

@@ -25,6 +25,17 @@ final TextEditingController _mobileController=TextEditingController();
 final TextEditingController _passwordController=TextEditingController();
 bool isLoading =false;
 
+_clearTextFeild(){
+  _emailController.clear();
+  _firstNameController.clear();
+  _lastNamemailController.clear();
+  _mobileController.clear();
+  _passwordController.clear();
+
+
+
+}
+
 Future<void> _signUp() async {
   Map<String,dynamic> requestBody={
     "email":_emailController.text,
@@ -48,6 +59,7 @@ Future<void> _signUp() async {
   });
 
 if(response.isSuccess){
+  _clearTextFeild();
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Sign up success..!')));
 }else{
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(response.responseData['data'])));

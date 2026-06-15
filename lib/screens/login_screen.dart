@@ -13,7 +13,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  
+  final GlobalKey<FormState> _formkey=GlobalKey<FormState>();
+
+
+  final TextEditingController _emailController=TextEditingController();
+  final TextEditingController _passwordController=TextEditingController();
+bool isLoading=false;
+
   void _onTapSignUp(){
     Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));
 }
@@ -26,58 +32,99 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.all(20.0),
           child: ScreenBackground(
         
-            child: Column(
-            children: [
-              SizedBox(height: 150,),
-              Text("Get Started With",
-              style: Theme.of(context).textTheme.titleLarge,
-              ),
-              SizedBox(height: 25,),
-              
-              TextFormField(
-          decoration: InputDecoration(
-            hintText: 'Email'
-          ),
-              ),
-              SizedBox(height: 10,),
-              TextFormField(
-                obscureText: true,
-                decoration: InputDecoration(
-        
-                    hintText: 'Password'
-                ),
-              ),
-              FilledButton(onPressed: (){
-Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainNavScreen()));
+            child: Form(
+            key: _formkey,
 
-              }, child: Icon(Icons.arrow_circle_right_outlined)),
-            SizedBox(height: 35),
-              Center(
               child: Column(
-                children: [
-                  TextButton(onPressed: (){
-        
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPasswordEmailVerify()));
-        
-                    
-                  }, child: Text('Forget Password ?',style: TextStyle(color: Colors.grey))),
-        
-                  RichText(text: TextSpan(
-                    text: "Don't have an account? ",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600),
-                    children: [
-                      TextSpan(
-                        text: 'Sign up',style: TextStyle(color: AppColors.pcolor,fontWeight:FontWeight.bold),
-                      recognizer: TapGestureRecognizer()..onTap=_onTapSignUp
-                      )
-                    ]
-        
-                  ))
-                ],
-              ),
-            )
-            
-            ],
-          ),),
+              children: [
+                SizedBox(height: 150,),
+                Text("Get Started With",
+                style: Theme.of(context).textTheme.titleLarge,
+                ),
+                SizedBox(height: 25,),
+                
+                TextFormField(
+                  controller: _emailController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please Enter email';
+                    } else {
+                      return null;
+                    }
+                  },
+
+
+
+
+                        decoration: InputDecoration(
+              hintText: 'Email'
+                        ),
+                ),
+                SizedBox(height: 10,),
+                TextFormField(
+               controller: _passwordController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please Enter First name';
+                    } else {
+                      return null;
+                    }
+                  },
+
+
+                  obscureText: true,
+                  decoration: InputDecoration(
+                      
+                      hintText: 'Password'
+                  ),
+                ),
+                FilledButton(onPressed: (){
+
+                  if(_formkey.currentState!.validate()){
+
+
+
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainNavScreen()));
+
+                  }
+
+
+
+
+              
+                }, child: Icon(Icons.arrow_circle_right_outlined)),
+              SizedBox(height: 35),
+                Center(
+                child: Column(
+                  children: [
+                    TextButton(onPressed: (){
+
+
+
+
+
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPasswordEmailVerify()));
+
+
+                    }, child: Text('Forget Password ?',style: TextStyle(color: Colors.grey))),
+                      
+                    RichText(text: TextSpan(
+                      text: "Don't have an account? ",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600),
+                      children: [
+                        TextSpan(
+                          text: 'Sign up',style: TextStyle(color: AppColors.pcolor,fontWeight:FontWeight.bold),
+                        recognizer: TapGestureRecognizer()..onTap=_onTapSignUp
+                        )
+                      ]
+                      
+                    ))
+                  ],
+                ),
+              )
+              
+              ],
+                        ),
+            ),),
         ),
       ),
     );

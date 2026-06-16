@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:task_manager/Controller/auth_controller.dart';
 import 'package:task_manager/Widgets/screen_background.dart';
 import 'package:task_manager/data/model/api_response.dart';
 import 'package:task_manager/data/model/user_model.dart';
@@ -47,8 +48,8 @@ bool isLoading=false;
     if(response.isSuccess){
 
       UserModel model=UserModel.fromJson(response.responseData['data']);
-
-
+String accessToken=response.responseData['token'];
+AuthController.saveUserData(model, accessToken);
 
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainNavScreen()));
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Sign in success..!')));

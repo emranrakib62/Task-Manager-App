@@ -24,7 +24,7 @@ if(response.statusCode==200){
 }else{
   return ApiResponse(responseCode: response.statusCode, responseData: jsonDecode(response.body), isSuccess: false);
 }
-  }catch($c){
+  }catch(e){
     return ApiResponse(responseCode:-1
     , responseData: null, isSuccess: false,errorMessage: e.toString());
   }

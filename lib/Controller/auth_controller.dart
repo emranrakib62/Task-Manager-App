@@ -13,15 +13,37 @@ static String ? accessToken;
 static UserModel ? userModel;
 
 static Future saveUserData(UserModel model,String token) async {
-  SharedPreferences sharedPreferences=await SharedPreferences.getInstance();
-await sharedPreferences.setString(_accessTokenKey, token);
-  await  sharedPreferences.setString(_userModelKey, jsonEncode(model.toJson()));
-accessToken=token;
-userModel=model;
-_logger.i(accessToken);
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  await sharedPreferences.setString(_accessTokenKey, token);
+  await sharedPreferences.setString(_userModelKey, jsonEncode(model.toJson()));
+  accessToken = token;
+  userModel = model;
+  _logger.i(accessToken);
   _logger.i(userModel);
+}
 
 
+  static Future getUserData() async {
+    SharedPreferences sharedPreferences=await SharedPreferences.getInstance();
+String ? token=sharedPreferences.getString(_accessTokenKey);
+if(token!=null){
+  accessToken=token;
+  String ? userData =sharedPreferences.getString(_userModelKey);
+  userModel=UserModel.fromJson(jsonDecode(userData!));
+}
+
+    _logger.i(token);
+    _logger.i(userModel);
+
+
+
+  }
+
+
+static Future isUserLoggeIn() async {
+  SharedPreferences sharedPreferences=await SharedPreferences.getInstance();
+  String ? token=sharedPreferences.getString(_accessTokenKey);
+  return token!=null;
 
 }
 

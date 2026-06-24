@@ -47,7 +47,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
       
       floatingActionButton: FloatingActionButton(onPressed: (){
 
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>AddNewTask()))
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>AddNewTask()));
       },child: Icon(Icons.add),),
     );
   }

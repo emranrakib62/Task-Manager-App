@@ -10,12 +10,12 @@ class ScreenBackground extends StatelessWidget {
     return Stack(
       children: [
         SvgPicture.asset(
-          AssetPaths.backgroundSVG, // এখানেও নাম ঠিক করা হয়েছে
+          AssetPaths.backgroundSVG,
           width: double.maxFinite,
           height: double.maxFinite,
           fit: BoxFit.cover,
         ),
-        child, // এখানে কমা যোগ করা হয়েছে
+        child,
       ],
     );
   }

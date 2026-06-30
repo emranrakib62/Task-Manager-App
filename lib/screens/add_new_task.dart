@@ -76,7 +76,7 @@ bool isLoading=false;
                   onPressed: (){
 
                 if(_formKey.currentState!.validate()){
-
+                  addNewTask();
 
         }
                 },
@@ -89,7 +89,7 @@ bool isLoading=false;
       )),
     );
   }
-  Future<void> _signUp() async {
+  Future<void> addNewTask() async {
     Map<String,dynamic> requestBody={
       "title":titleController.text,
       "description":descriptionController.text,
@@ -111,7 +111,7 @@ bool isLoading=false;
 
     if(response.isSuccess){
 
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Sign up success..!')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Task Added')));
     }else{
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(response.responseData['data'])));
     }

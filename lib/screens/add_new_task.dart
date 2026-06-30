@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/Widgets/screen_background.dart';
+import 'package:task_manager/data/model/api_response.dart';
+import 'package:task_manager/data/service/api_caller.dart';
 import 'package:task_manager/screens/tm_appbar.dart';
+import 'package:task_manager/utils/urls.dart';
 class AddNewTask extends StatefulWidget {
   const AddNewTask({super.key});
 
@@ -12,7 +15,7 @@ class _AddNewTaskState extends State<AddNewTask> {
   TextEditingController titleController=TextEditingController();
   TextEditingController descriptionController=TextEditingController();
   final GlobalKey<FormState> _formKey=GlobalKey<FormState>();
-
+bool isLoading=false;
 
   @override
   Widget build(BuildContext context) {
@@ -86,4 +89,33 @@ class _AddNewTaskState extends State<AddNewTask> {
       )),
     );
   }
+  Future<void> _signUp() async {
+    Map<String,dynamic> requestBody={
+      "title":titleController.text,
+      "description":descriptionController.text,
+      "status":"New"
+    };
+    setState(() {
+      isLoading=true;
+    });
+
+
+    final ApiResponse response=await ApiCaller.PostRequest(
+      URL:Urls.AddTaskUrl,
+      body:requestBody,
+
+    );
+    setState(() {
+      isLoading=false;
+    });
+
+    if(response.isSuccess){
+
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Sign up success..!')));
+    }else{
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(response.responseData['data'])));
+    }
+
+  }
+
 }
